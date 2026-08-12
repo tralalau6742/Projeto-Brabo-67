@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de DOM e JS</title>
+  <style>
+    .destaque {
+      color: black;
+    }
+    #oculto {
+      display: none;
+    }
+    .caixa {
+      width: 50px;
+      height: 50px;
+      background-color: lightgray;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="titulo">Título Original</h1>
+
+  <p class="destaque">Este parágrafo vai mudar de cor.</p>
+
+  <ul>
+    <li class="item">Item 1</li>
+    <li class="item">Item 2</li>
+    <li class="item">Item 3</li>
+  </ul>
+
+  <p id="oculto">Este é o texto que estava escondido!</p>
+  <button id="btn-mostrar">Mostrar Texto</button>
+
+  <br><br>
+
+  <input type="text" id="entrada" placeholder="Digite algo...">
+  <button id="btn-atualizar">Atualizar Texto</button>
+  <p id="resultado">O texto vai aparecer aqui.</p>
+
+  <div class="caixa"></div>
+  <div class="caixa"></div>
+  <div class="caixa"></div>
+  <div class="caixa"></div>
+  <div class="caixa"></div>
+
+  <img id="foto" src="https://via.placeholder.com/150" alt="Imagem">
+  <br>
+  <button id="btn-imagem">Mudar Imagem</button>
+
+  <br><br>
+
+  <button class="botao-estiloso">Botão Estiloso</button>
+
+  <p id="mensagem">Texto antigo da mensagem.</p>
+
+  <p class="comentario">Primeiro comentário</p>
+  <p class="comentario">Segundo comentário</p>
+  <p class="comentario">Terceiro comentário</p>
+
+  <script>
+    // 1. Alterar Título
+    let titulo = document.getElementById("titulo");
+    titulo.innerText = "Olá, Mundo!";
+
+    // 2. Trocar a Cor de um Parágrafo
+    let paragrafoDestaque = document.querySelector(".destaque");
+    paragrafoDestaque.style.color = "blue";
+
+    // 3. Alterar Múltiplos Elementos
+    let itens = document.querySelectorAll(".item");
+    for (let i = 0; i < itens.length; i++) {
+      itens[i].innerText = "Item modificado";
+    }
+
+    // 4. Mostrar Texto Oculto
+    let btnMostrar = document.getElementById("btn-mostrar");
+    btnMostrar.onclick = function() {
+      let paragrafoOculto = document.getElementById("oculto");
+      paragrafoOculto.style.display = "block";
+    };
+
+    // 5. Atualizar Texto com Input
+    let btnAtualizar = document.getElementById("btn-atualizar");
+    btnAtualizar.onclick = function() {
+      let valorInput = document.getElementById("entrada").value;
+      let resultado = document.getElementById("resultado");
+      resultado.innerText = valorInput;
+    };
+
+    // 6. Contar Elementos
+    let caixas = document.querySelectorAll(".caixa");
+    console.log("Quantidade de caixas:", caixas.length);
+
+    // 7. Mudar Imagem
+    let btnImagem = document.getElementById("btn-imagem");
+    btnImagem.onclick = function() {
+      let imagem = document.getElementById("foto");
+      imagem.src = "https://via.placeholder.com/150/0000FF/808080";
+    };
+
+    // 8. Alterar Estilo com Classe
+    let botaoEstiloso = document.querySelector(".botao-estiloso");
+    botaoEstiloso.style.backgroundColor = "green";
+    botaoEstiloso.style.color = "white";
+    botaoEstiloso.style.borderRadius = "10px";
+    botaoEstiloso.style.padding = "10px";
+
+    // 9. Selecionar com ID e Mudar Texto
+    let mensagem = document.getElementById("mensagem");
+    mensagem.innerText = "Texto alterado com sucesso!";
+
+    // 10. Iterar sobre Vários Elementos
+    let comentarios = document.querySelectorAll(".comentario");
+    comentarios.forEach(function(comentario) {
+      comentario.innerText = "Comentário: " + comentario.innerText;
+    });
+  </script>
+
+</body>
+</html>
