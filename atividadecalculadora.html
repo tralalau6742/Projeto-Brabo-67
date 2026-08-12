@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+</head>
+<body>
+
+    <h1>Calculadora</h1>
+
+    <input type="text" id="num1"><br><br>
+    <input type="text" id="num2"><br><br>
+
+    <button onclick="calcular('+')">+</button>
+    <button onclick="calcular('-')">-</button>
+    <button onclick="calcular('x')">x</button>
+    <button onclick="calcular('/')">/</button>
+
+    <h2 id="resultado">Resultado: </h2>
+
+    <script>
+        function calcular(operacao) {
+            const n1 = Number(document.getElementById('num1').value);
+            const n2 = Number(document.getElementById('num2').value);
+            let res = 0;
+
+            if (operacao === '+') res = n1 + n2;
+            if (operacao === '-') res = n1 - n2;
+            if (operacao === 'x') res = n1 * n2;
+            if (operacao === '/') res = n1 / n2;
+
+            document.getElementById('resultado').innerText = `Resultado: ${n1} ${operacao} ${n2} = ${res}`;
+        }
+    </script>
+
+</body>
+</html>
