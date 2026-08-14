@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo com Botão Alternador</title>
+    <script>
+        function mudaVisibilidade(id) {
+            const elementoHTML = document.getElementById(id);
+            if (elementoHTML.className === "mostra") {
+                elementoHTML.className = "esconde";
+            } else {
+                elementoHTML.className = "mostra";
+            }
+            atualizaTextoBotao();
+        }
+
+        function alternaTodasVisibilidades() {
+            const listas = document.querySelectorAll("ul");
+            // Verifica se existe QUALQUER lista visível
+            const temAlgumaVisivel = Array.from(listas).some(lista => lista.className === "mostra");
+
+            listas.forEach(lista => {
+                // Se houver alguma visível, esconde todas; caso contrário, mostra todas
+                lista.className = temAlgumaVisivel ? "esconde" : "mostra";
+            });
+
+            atualizaTextoBotao();
+        }
+
+        function atualizaTextoBotao() {
+            const listas = document.querySelectorAll("ul");
+            const botao = document.getElementById("btnAlterna");
+            const temAlgumaVisivel = Array.from(listas).some(lista => lista.className === "mostra");
+
+            botao.innerText = temAlgumaVisivel ? "Recolher Todos" : "Expandir Todos";
+        }
+    </script>
+    <style>
+        .mostra {
+            display: block;
+        }
+        .esconde {
+            display: none;
+        }
+        button {
+            margin-bottom: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnAlterna" onclick="alternaTodasVisibilidades()">Recolher Todos</button>
+
+    <ol>
+        <li onclick="mudaVisibilidade('listaTeste1')">Teste1
+            <ul id="listaTeste1" class="mostra">
+                <li>bla</li>
+                <li>bla</li>
+                <li>bla</li>
+            </ul>
+        </li>
+
+        <li onclick="mudaVisibilidade('listaTeste2')">Teste2
+            <ul id="listaTeste2" class="mostra">
+                <li>ble</li>
+                <li>ble</li>
+                <li>ble</li>
+            </ul>
+        </li>
+    </ol>
+
+</body>
+</html>
