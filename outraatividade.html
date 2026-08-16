@@ -17,11 +17,11 @@
 
         function alternaTodasVisibilidades() {
             const listas = document.querySelectorAll("ul");
-            // Verifica se existe QUALQUER lista visível
+           
             const temAlgumaVisivel = Array.from(listas).some(lista => lista.className === "mostra");
 
             listas.forEach(lista => {
-                // Se houver alguma visível, esconde todas; caso contrário, mostra todas
+                
                 lista.className = temAlgumaVisivel ? "esconde" : "mostra";
             });
 
